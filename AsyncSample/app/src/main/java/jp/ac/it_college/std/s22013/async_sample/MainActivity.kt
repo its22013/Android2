@@ -6,6 +6,7 @@ import android.util.Log
 import androidx.annotation.UiThread
 import androidx.annotation.WorkerThread
 import androidx.recyclerview.widget.LinearLayoutManager
+import jp.ac.it_college.std.s22013.async_coroutine_sample.BuildConfig
 import jp.ac.it_college.std.s22013.async_sample.databinding.ActivityMainBinding
 import jp.ac.it_college.std.s22013.async_sample.databinding.RowBinding
 import org.json.JSONObject
