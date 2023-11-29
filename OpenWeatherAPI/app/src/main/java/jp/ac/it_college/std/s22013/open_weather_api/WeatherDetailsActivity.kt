@@ -79,8 +79,8 @@ class WeatherDetailsActivity : AppCompatActivity() {
             val root = JSONObject(result)
             val cityName = root.getString("name")
             val main = root.getJSONObject("main")
-            val temperature = main.getDouble("temp")
-            val feelsLike = main.getDouble("feels_like")
+            val temperature = main.getDouble("temp") - 273.15
+            val feelsLike = main.getDouble("feels_like") - 273.15
             val pressure = main.getDouble("pressure")
             val humidity = main.getDouble("humidity")
             val weatherArray = root.getJSONArray("weather")
@@ -129,16 +129,17 @@ class WeatherDetailsActivity : AppCompatActivity() {
                 val weatherDetails = getWeatherDetails(forecastData.getJSONArray("weather"))
 
                 // 3時間毎の5日間の天気予報を表示
-                forecastDetails.append("時間: ${timestampToTime(timestamp)} - $weatherDetails\n")
+                forecastDetails.append("${timestampToTime(timestamp)} - $weatherDetails\n")
             }
 
             // 以下、表示処理
-            binding.forecastDetails.text = "天気予報詳細:\n$forecastDetails"
-            binding.hourlyForecast.text = "3時間ごとの予報"
+            binding.hourlyForecast.text = ""
+            binding.forecastDetails.text = "３時間毎の予報 \n$forecastDetails"
+
         } else {
             // エラーメッセージを表示するなどの処理を追加
-            binding.forecastDetails.text = "天気予報情報の取得に失敗しました"
-            binding.hourlyForecast.text = "天気予報情報の取得に失敗しました"
+            binding.forecastDetails.text = "天気予報情報の取得に失敗しました\n3 Hourly Forecast: 天気予報情報の取得に失敗しました"
+
         }
     }
 
@@ -162,6 +163,6 @@ class WeatherDetailsActivity : AppCompatActivity() {
     private fun formatTemperature(temperature: Double): String {
         // 気温を日本語の数字にフォーマットする
         val numberFormat = NumberFormat.getInstance(Locale.JAPANESE)
-        return numberFormat.format(temperature)
+        return numberFormat.format(temperature.toInt())
     }
 }
