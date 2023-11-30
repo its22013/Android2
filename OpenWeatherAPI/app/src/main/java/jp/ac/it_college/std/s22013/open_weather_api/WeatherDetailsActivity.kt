@@ -3,6 +3,7 @@ package jp.ac.it_college.std.s22013.open_weather_api
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
+import com.bumptech.glide.Glide
 import jp.ac.it_college.std.s22013.open_weather_api.databinding.ActivityWeatherDetailsBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -89,6 +90,11 @@ class WeatherDetailsActivity : AppCompatActivity() {
             } else {
                 ""
             }
+            val weatherIcon = if (weatherArray.length() > 0) {
+                weatherArray.getJSONObject(0).getString("icon")
+            } else {
+                ""
+            }
             val wind = root.getJSONObject("wind")
             val windSpeed = wind.getDouble("speed")
             val windDirection = wind.getDouble("deg")
@@ -102,14 +108,20 @@ class WeatherDetailsActivity : AppCompatActivity() {
             // 現在の天気情報を表示
             binding.currentLocation.text = "現在の天気 \n $cityName"
 
-            binding.currentTemperature.text =
-                "気温: ${formatTemperature(temperature)}°C"
-            binding.feelsLike.text =
-                "体感温度: ${formatTemperature(feelsLike)}°C"
+            binding.currentTemperature.text = "気温: ${formatTemperature(temperature)}°C"
+
+            binding.feelsLike.text = "体感温度: ${formatTemperature(feelsLike)}°C"
+
             binding.pressure.text = "気圧: ${pressure}hPa"
+
             binding.humidity.text = "湿度: ${humidity}%"
+
             binding.weather.text = "天気: $weatherDescription"
-            // 他の項目も同様に追加
+
+            // 天気アイコンの表示
+            Glide.with(this@WeatherDetailsActivity)
+                .load("https://openweathermap.org/img/wn/$weatherIcon.png")
+                .into(binding.weatherIcon)
 
         } else {
             // エラーメッセージを表示するなどの処理を追加
