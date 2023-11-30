@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">NavigationSample</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="home">ホーム</string>
+    <string name="next">次へ</string>
+    <string name="second">セカンド</string>
+    <string name="check01">選択１</string>
+    <string name="check02">選択２</string>
+    <string name="check03" />
+    <string name="check3">選択３</string>
+    <string name="check04">選択４</string>
+    <string name="thrad">サード</string>
+</resources>
