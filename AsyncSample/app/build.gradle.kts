@@ -1,6 +1,8 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+
+
     id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
 }
 
@@ -34,10 +36,12 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
     buildFeatures {
         viewBinding = true
         buildConfig = true
     }
+
 }
 
 dependencies {
