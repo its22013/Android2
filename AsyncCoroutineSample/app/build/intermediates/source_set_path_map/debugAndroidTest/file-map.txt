@@ -1,0 +1,6 @@
+jp.ac.it_college.std.s22013.asynccoroutinesample.test.app-core-1.5.0-0 /home/s22013/.gradle/caches/transforms-3/020deb1999ecd2f34f73445626b56db9/transformed/core-1.5.0/res
+jp.ac.it_college.std.s22013.asynccoroutinesample.test.app-annotation-experimental-1.3.0-1 /home/s22013/.gradle/caches/transforms-3/75f7d1d3eb8f436eedef322c154bd1dc/transformed/annotation-experimental-1.3.0/res
+jp.ac.it_college.std.s22013.asynccoroutinesample.test.app-androidTest-2 /home/s22013/AndroidStudioProjects/Android2/AsyncCoroutineSample/app/build/generated/res/resValues/androidTest/debug
+jp.ac.it_college.std.s22013.asynccoroutinesample.test.app-mergeDebugAndroidTestResources-3 /home/s22013/AndroidStudioProjects/Android2/AsyncCoroutineSample/app/build/intermediates/incremental/debugAndroidTest/mergeDebugAndroidTestResources/merged.dir
+jp.ac.it_college.std.s22013.asynccoroutinesample.test.app-mergeDebugAndroidTestResources-4 /home/s22013/AndroidStudioProjects/Android2/AsyncCoroutineSample/app/build/intermediates/incremental/debugAndroidTest/mergeDebugAndroidTestResources/stripped.dir
+jp.ac.it_college.std.s22013.asynccoroutinesample.test.app-merged_res-5 /home/s22013/AndroidStudioProjects/Android2/AsyncCoroutineSample/app/build/intermediates/merged_res/debugAndroidTest

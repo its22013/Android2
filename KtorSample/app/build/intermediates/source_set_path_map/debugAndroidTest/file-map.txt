@@ -1,0 +1,6 @@
+jp.ac.it_college.std.s22013.ktorsample.test.app-core-1.5.0-0 /home/s22013/.gradle/caches/transforms-3/1d67c278cba41b2c1d760b87e2d16394/transformed/core-1.5.0/res
+jp.ac.it_college.std.s22013.ktorsample.test.app-annotation-experimental-1.3.0-1 /home/s22013/.gradle/caches/transforms-3/58ed347bd144510c2b39ecabb553df16/transformed/annotation-experimental-1.3.0/res
+jp.ac.it_college.std.s22013.ktorsample.test.app-androidTest-2 /home/s22013/AndroidStudioProjects/Android2/KtorSample/app/build/generated/res/resValues/androidTest/debug
+jp.ac.it_college.std.s22013.ktorsample.test.app-mergeDebugAndroidTestResources-3 /home/s22013/AndroidStudioProjects/Android2/KtorSample/app/build/intermediates/incremental/debugAndroidTest/mergeDebugAndroidTestResources/merged.dir
+jp.ac.it_college.std.s22013.ktorsample.test.app-mergeDebugAndroidTestResources-4 /home/s22013/AndroidStudioProjects/Android2/KtorSample/app/build/intermediates/incremental/debugAndroidTest/mergeDebugAndroidTestResources/stripped.dir
+jp.ac.it_college.std.s22013.ktorsample.test.app-merged_res-5 /home/s22013/AndroidStudioProjects/Android2/KtorSample/app/build/intermediates/merged_res/debugAndroidTest

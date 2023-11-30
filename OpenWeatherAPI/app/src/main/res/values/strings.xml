@@ -1,0 +1,20 @@
+<resources>
+    <string name="weather_details">%1$s: %2$s, %3$.2f, %4$.2f</string>
+    <string name="tool_tp">現在地</string>
+    <string name="toto_name">都道府県\n選択</string>
+    <string name="title_name">OpenWeatherAPI</string>
+    <string name="time_name">３時間毎の天気</string>
+    <string name="weather_name">天気情報を取得</string>
+    <string name="start_name">スタート</string>
+    <string name="selected_prefecture">都道府県</string>
+    <string name="weather_info">天気情報</string>
+    <string name="temperature_label">気温:</string>
+    <string name="feels_like_label">体感気温:</string>
+    <string name="pressure_label">気圧(陸上):</string>
+    <string name="humidity_label">湿度:</string>
+    <string name="Weather_label">天気:</string>
+    <string name="weather_details_title">Weather Details</string>
+    
+    <!-- WeatherDetailsActivityの変数   -->
+    <string name="PrefectureID_is_invalid">都道府県IDが無効です</string>
+</resources>
