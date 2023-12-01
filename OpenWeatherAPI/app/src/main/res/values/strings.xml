@@ -10,9 +10,14 @@
     <string name="weather_info">天気情報</string>
     <string name="temperature_label">気温:</string>
     <string name="feels_like_label">体感気温:</string>
-    <string name="pressure_label">気圧(陸上):</string>
-    <string name="humidity_label">湿度:</string>
+    <string name="pressure_label">気圧(陸上):1013pha</string>
+    <string name="humidity_label">湿度:73.0%</string>
     <string name="Weather_label">天気:</string>
+    <string name="windSpeed_label">風速:5.29m/s</string>
+    <string name="windDirection_label">風向:300.0</string>
+    <string name="windGust_label">瞬間風速:10.78m/s</string>
+    <string name="rain_label">降水確率:0.0%</string>
+    <string name="snowfall_label">積雪量:mm</string>
     <string name="weather_details_title">Weather Details</string>
     
     <!-- WeatherDetailsActivityの変数   -->

@@ -19,6 +19,7 @@ import java.util.Date
 import java.util.Locale
 
 class WeatherDetailsActivity : AppCompatActivity() {
+
     companion object {
         private const val CURRENT_WEATHER_URL = "https://api.openweathermap.org/data/2.5/weather?lang=ja"
         private const val FORECAST_URL = "https://api.openweathermap.org/data/2.5/forecast?lang=ja"
@@ -45,7 +46,6 @@ class WeatherDetailsActivity : AppCompatActivity() {
                 showForecast(forecastResult)
             }
         } else {
-            // エラーメッセージを表示するなどの処理を追加
             binding.currentLocation.text = "都道府県IDが無効です"
         }
     }
@@ -62,14 +62,11 @@ class WeatherDetailsActivity : AppCompatActivity() {
             try {
                 con.connect()
                 val result = con.inputStream.reader().readText()
-                // 通信成功時に正しく切断する
                 result
             } catch (ex: SocketTimeoutException) {
-                // 通信がタイムアウトした場合のエラーハンドリング
                 ex.printStackTrace()
                 ""
             } finally {
-                // 通信切断をfinallyブロックに移動
                 con.disconnect()
             }
         }
@@ -104,8 +101,11 @@ class WeatherDetailsActivity : AppCompatActivity() {
             val snow = root.optJSONObject("snow")
             val snowfall = snow?.optDouble("1h", 0.0) ?: 0.0
             val timestamp = root.getLong("dt")
+            val windSpeedText = "風速: $windSpeed m/s"
+            val windDirectionText = "風向: $windDirection°"
+            val windGustText = "瞬間風速: $windGust m/s"
+            val rainText = "降水確率: ${precipitation}%"
 
-            // 現在の天気情報を表示
             binding.currentLocation.text = "現在の天気 \n $cityName"
 
             binding.currentTemperature.text = "気温: ${formatTemperature(temperature)}°C"
@@ -118,13 +118,25 @@ class WeatherDetailsActivity : AppCompatActivity() {
 
             binding.weather.text = "天気: $weatherDescription"
 
-            // 天気アイコンの表示
+            binding.windSpeed.text = windSpeedText
+
+            binding.windDirection.text = windDirectionText
+
+            binding.windGust.text = windGustText
+
+            binding.rain.text = rainText
+
+            if (snowfall > 0) {
+                binding.snowfall.text = "積雪量: ${snowfall}mm"
+            } else {
+                binding.snowfall.text = "積雪なし"
+            }
+
             Glide.with(this@WeatherDetailsActivity)
                 .load("https://openweathermap.org/img/wn/$weatherIcon.png")
                 .into(binding.weatherIcon)
 
         } else {
-            // エラーメッセージを表示するなどの処理を追加
             binding.currentLocation.text = "現在の天気情報の取得に失敗しました"
         }
     }
@@ -140,19 +152,20 @@ class WeatherDetailsActivity : AppCompatActivity() {
                 val timestamp = forecastData.getLong("dt")
                 val weatherDetails = getWeatherDetails(forecastData.getJSONArray("weather"))
 
-                // 3時間毎の5日間の天気予報を表示
-                forecastDetails.append("${timestampToTime(timestamp)} - $weatherDetails\n")
+                forecastDetails.append("${timestampToTime(timestamp)}  $weatherDetails ${getPrecipitation(forecastData)}%\n")
             }
 
-            // 以下、表示処理
             binding.hourlyForecast.text = ""
             binding.forecastDetails.text = "３時間毎の予報 \n$forecastDetails"
 
         } else {
-            // エラーメッセージを表示するなどの処理を追加
             binding.forecastDetails.text = "天気予報情報の取得に失敗しました\n3 Hourly Forecast: 天気予報情報の取得に失敗しました"
-
         }
+    }
+
+    private fun getPrecipitation(forecastData: JSONObject): Double {
+        val rain = forecastData.optJSONObject("rain")
+        return rain?.optDouble("1h", 0.0) ?: 0.0
     }
 
     private fun getWeatherDetails(weatherArray: JSONArray): String {
@@ -164,16 +177,11 @@ class WeatherDetailsActivity : AppCompatActivity() {
     }
 
     private fun timestampToTime(timestamp: Long): String {
-        // タイムスタンプを時間に変換する処理を追加
-        // 例: 1637149200 → 2021-11-17 12:00:00
-        // 注意: 日付時刻のフォーマットは実際のAPIの仕様に合わせて調整する必要があります。
-        // この例では単なる参考としています。
         val format = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
         return format.format(Date(timestamp * 1000))
     }
 
     private fun formatTemperature(temperature: Double): String {
-        // 気温を日本語の数字にフォーマットする
         val numberFormat = NumberFormat.getInstance(Locale.JAPANESE)
         return numberFormat.format(temperature.toInt())
     }
